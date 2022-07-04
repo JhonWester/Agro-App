@@ -29,12 +29,15 @@ export class LoginComponent implements OnInit {
 
   getUser(id: string) {
     this.fireService.getUser(id).subscribe((res: any)=> {
-      this.userService.User = res as User;
+      const user = res as User;
+      this.userService.User = user;
+      this.toast.success(`Bienvenido a Be-Agro!!! ${user.names}`)
       this.router.navigate(['/home']);
       this.loading = false;
     }, 
     error => {
-      this.toast.error('Error obtieniendo el usuario', 'Error!!!')
+      this.toast.error(this.fireService.firebaseError(error.codeks), 'Error!!!')
+      this.loading = false;
     })
   }
 
@@ -46,7 +49,8 @@ export class LoginComponent implements OnInit {
         this.getUser(response.user.uid);
       })
       .catch(error => {
-        this.toast.error('Error en las credenciales', 'Error')
+        this.toast.error(this.fireService.firebaseError(error.code), 'Error')
+        this.loading = false;
       })
     }
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Validation from 'src/app/app.component';
 import { User } from 'src/app/Models/Class/User';
 import { FireStoreConnection } from 'src/app/Services/FireStoreConnection.Service';
 
@@ -24,15 +24,21 @@ export class RegisterUserComponent implements OnInit {
       lastName: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      repeatPass: ['', Validators.required]
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repeatPass: ['', [Validators.required, Validators.minLength(6)]]
+    },
+    {
+      validators: [Validation.match('password', 'repeatPass')]
+    }
+    );
   }
 
   ngOnInit(): void {
   }
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.registerUser.controls;
+  }
   register(): void {
     if (this.registerUser.valid && this.validatePass()) {
       const form = this.registerUser.value;
@@ -51,9 +57,10 @@ export class RegisterUserComponent implements OnInit {
         }
       }).catch(error => {
         this.loading = false;
-        this.toast.error(this.fireService.firebaseEmailError(error.code), 'Error!');
+        this.toast.error(this.fireService.firebaseError(error.code), 'Error!');
       })
     } else {
+      console.log(this.registerUser)
       this.toast.error('Formulario incompleto', 'Error')
     }
     
@@ -75,5 +82,4 @@ export class RegisterUserComponent implements OnInit {
     const form = this.registerUser.value;
     return form.password == form.repeatPass;
   }
-
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../Models/Class/User';
+import { FirebaseCodeEnum } from '../Utils/firebase-code-error';
 
 @Injectable({
   providedIn: 'root'
@@ -44,19 +45,28 @@ export class FireStoreConnection {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  firebaseEmailError(code: string) {
+  firebaseError(code: string) {
     switch (code) {
-      case 'auth/email-already-in-use':
+      // Correo ya existe
+      case FirebaseCodeEnum.EmailAlreadyUse:
         return 'El usuario ya existe'
-      case 'auth/weak-password':
+        // Password muy debil
+      case FirebaseCodeEnum.WeakPassword:
         return 'La contrasenha es muy debil';
-      case 'auth/invalid-email':
-        return 'Correo invalido'
+        // Email incorrecto
+      case FirebaseCodeEnum.InvalidEmail:
+        return 'Correo o contranseha invalidas';
+        // contrasenha incorrecta
+      case FirebaseCodeEnum.WrongPassword:
+        return 'Contrasenha incorrecta';
+      case FirebaseCodeEnum.UserNotExist:
+        return 'El usuario no existe';
       default:
-        return 'Error desconocido';
+      return 'Error desconocido';
     }
-    
   }
 
-
+  recoveryPass(email: string) {
+    return this.auth.sendPasswordResetEmail(email);
+  }
 }
