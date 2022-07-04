@@ -1,18 +1,18 @@
 <div class="wrapper">
-    <div class="body">
+    <div class="body" *ngIf="!loading">
         <img class="logo" src="../../../assets/images/acceso.png" alt="login">
         <h1>Login</h1>
-        <form >
+        <form (ngSubmit)="doLogin()" [formGroup]="formLogin">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="name@example.com">
+                <input type="email" class="form-control" placeholder="name@example.com" formControlName="email">
                 <label>Email</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
                 <label>Password</label>
               </div>
               <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" type="button">Ingresar</button>
+                <button class="btn btn-primary btn-lg" type="submit">Ingresar</button>
               </div>
 
               <p class="mt-3">No tienes cuenta <a routerLink="/register-user">Registrar</a></p>
@@ -20,4 +20,5 @@
 
         </form>
     </div>
+    <app-spinner *ngIf="loading"></app-spinner>
 </div>
