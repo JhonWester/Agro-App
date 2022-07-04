@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private fireService: FireStoreConnection, private fb: FormBuilder, private toast: ToastrService,
               private router: Router, private userService: UserService) { 
     this.formLogin = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     })
   }
