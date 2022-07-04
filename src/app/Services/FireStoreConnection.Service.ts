@@ -7,14 +7,14 @@ import { User } from '../Models/Class/User';
   providedIn: 'root'
 })
 export class FireStoreConnection {
-  pathUsers = 'Users/'
+  pathUsers = 'Users'
 
   constructor(private fireBase: AngularFirestore, private auth: AngularFireAuth) { 
   }
 
   createUser(user: User) {
     const collection = this.fireBase.collection(this.pathUsers);
-    return collection.doc(this.pathUsers).set({...user});
+    return collection.doc(user.id).set({...user});
   }
 
   getUser(id: string) {
