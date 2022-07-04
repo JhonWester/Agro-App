@@ -17,4 +17,8 @@ export class UserService {
   set User(user: User) {
     this._user = user;
   }
+
+  isLoggued(): boolean {
+    return this._user !== null;
+  }
 }

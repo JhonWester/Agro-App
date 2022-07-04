@@ -33,7 +33,7 @@ export class FireStoreConnection {
   }
 
   createLogin(email: string, password: string) {
-    return this.auth.signInWithEmailAndPassword(email, password)
+    return this.auth.createUserWithEmailAndPassword(email, password)
   }
 
   getId(): string {
