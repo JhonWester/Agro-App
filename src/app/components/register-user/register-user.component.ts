@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/Class/User';
 import { FireStoreConnection } from 'src/app/Services/FireStoreConnection.Service';
 
@@ -14,7 +15,7 @@ export class RegisterUserComponent implements OnInit {
   registerUser: FormGroup;
   user: User;
 
-  constructor(private fb: FormBuilder, private fireService: FireStoreConnection) { 
+  constructor(private fb: FormBuilder, private fireService: FireStoreConnection, private toast: ToastrService) { 
     this.registerUser = this.fb.group({
       names: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -30,26 +31,37 @@ export class RegisterUserComponent implements OnInit {
   }
 
   register(): void {
-    // if (this.registerUser.valid && this.validatePass()) {
-    //   const form = this.registerUser.value;
-    //   // this.user = new User();
-    //   // this.user.names = form.names;
-    //   // this.user.lastNames = form.lastName;
-    //   // this.user.address = form.address;
-    //   // this.user.phone = form.phone;
-    //   // this.user.pass = form.pass;
+    if (this.registerUser.valid && this.validatePass()) {
+      const form = this.registerUser.value;
+      this.user = new User();
+      this.user.names = form.names;
+      this.user.lastNames = form.lastName;
+      this.user.address = form.address;
+      this.user.phone = form.phone;
+      this.user.pass = '';
       
-    // }
-    // console.log(this.registerUser)
-    this.user = new User();
-      this.user.id = this.fireService.getId();
-      this.user.names = 'Adriana';
-      this.user.lastNames = 'Garcia Loaiza';
-      this.user.address = 'Carrera 4';
-      this.user.phone = '31478145465';
-      this.user.pass = '12345';
+      this.fireService.createLogin(this.user.email, form.pass).then(response => {
+        if (response) {
+          this.createUser(response.user!.uid);
+        }
+      }).catch(error => {
+        this.toast.error(this.fireService.firebaseEmailError(error), 'Error!');
+      })
+    } else {
+      this.toast.error('Formulario incompleto', 'Error')
+    }
+    
+  }
 
-      this.fireService.createUser(this.user)
+  createUser(id: string) {
+    this.user.id = id;
+    const success = this.fireService.createUser(this.user).catch(() => {
+      this.toast.error('Error al crear el usuario', 'Error')
+    });
+
+    if (success != null) {
+      this.toast.error('Usuario creado con exito!!!', 'Exito')
+    }
   }
 
   validatePass(): boolean {
