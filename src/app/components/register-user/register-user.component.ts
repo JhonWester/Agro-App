@@ -85,6 +85,7 @@ export class RegisterUserComponent implements OnInit {
   verifiedEmail() {
     this.fireService.verifiedEmail().then(() => {
       this.toast.info('Enviamos un correo para verificar tu usuario', 'Verifica tu correo!!!')
+      this.registerUser.reset();
     })
     .catch(error => {
       console.error(error)
