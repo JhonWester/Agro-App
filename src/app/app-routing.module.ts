@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthGuard } from './Services/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: 'register-user', component: RegisterUserComponent},
   {path: 'verify-email', component: VerifyEmailComponent},
   {path: 'recovery-pass', component: RecoveryPasswordComponent},
-  {path: 'home', component: DashboardComponent},
+  {path: 'home', component: DashboardComponent, canActivate: [AuthGuard], canLoad: [AuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'},
 
 ];

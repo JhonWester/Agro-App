@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { User } from '../Models/Class/User';
 
 @Injectable({
@@ -6,19 +7,28 @@ import { User } from '../Models/Class/User';
 })
 export class UserService {
 
-  _user: User;
+  private _data: Subscription;
+  private _user: User | undefined;
 
   constructor() { }
 
-  get User(): User {
+  get User(): User | undefined{
     return this._user;
   }
  
-  set User(user: User) {
+  set User(user: User | undefined) {
     this._user = user;
   }
 
+  set data(sucription: Subscription) {
+    this._data = sucription;
+  }
+
+  get data(): Subscription {
+    return this._data;
+  }
+
   isLoggued(): boolean {
-    return this._user !== null;
+    return this._user !== undefined;
   }
 }

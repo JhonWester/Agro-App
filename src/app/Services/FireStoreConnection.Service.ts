@@ -73,4 +73,8 @@ export class FireStoreConnection {
   verifiedEmail() {
     return this.auth.currentUser.then(user => user?.sendEmailVerification())
   }
+
+  logout() {
+    return this.auth.signOut();
+  }
 }
