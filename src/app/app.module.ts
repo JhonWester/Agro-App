@@ -20,6 +20,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { environment } from 'src/environments/environment';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { environment } from 'src/environments/environment';
     RegisterUserComponent,
     VerifyEmailComponent,
     RecoveryPasswordComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   getUser(id: string) {
-    this.fireService.getUser(id).subscribe((res: any)=> {
+    this.userService.data = this.fireService.getUser(id).subscribe((res: any)=> {
       const user = res as User;
       this.userService.User = user;
       this.toast.success(`Bienvenido a Be-Agro!!! ${user.names}`)
@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
       this.loading = false;
     }, 
     error => {
-      this.toast.error(this.fireService.firebaseError(error.codeks), 'Error!!!')
+      this.toast.error(this.fireService.firebaseError(error.code), 'Error!!!')
       this.loading = false;
-    })
+    });
   }
 
   doLogin(): void {
