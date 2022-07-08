@@ -46,7 +46,13 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       const form = this.formLogin.value;
       this.fireService.login(form.email, form.password).then((response: any) => {
-        this.getUser(response.user.uid);
+
+        if (response.user?.emailVerified) {
+          this.getUser(response.user.uid);
+        } else {
+          this.router.navigate(['/verify-email']);
+        }
+        
       })
       .catch(error => {
         this.toast.error(this.fireService.firebaseError(error.code), 'Error')

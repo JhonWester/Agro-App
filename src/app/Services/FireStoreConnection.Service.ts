@@ -69,4 +69,8 @@ export class FireStoreConnection {
   recoveryPass(email: string) {
     return this.auth.sendPasswordResetEmail(email);
   }
+
+  verifiedEmail() {
+    return this.auth.currentUser.then(user => user?.sendEmailVerification())
+  }
 }
