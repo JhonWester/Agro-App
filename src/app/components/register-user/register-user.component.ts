@@ -69,8 +69,7 @@ export class RegisterUserComponent implements OnInit {
   createUser(id: string) {
     this.user.id = id;
     this.fireService.createUser(this.user).then(() => {
-      this.toast.success('Usuario creado con exito!!!', 'Usuario registrado')
-      this.router.navigate(['/login'])
+      this.verifiedEmail();
     }).catch(() => {
       this.toast.error('Error al crear el usuario', 'Error')
       this.loading 
@@ -81,5 +80,16 @@ export class RegisterUserComponent implements OnInit {
   validatePass(): boolean {
     const form = this.registerUser.value;
     return form.password == form.repeatPass;
+  }
+
+  verifiedEmail() {
+    this.fireService.verifiedEmail().then(() => {
+      this.toast.info('Enviamos un correo para verificar tu usuario', 'Verifica tu correo!!!')
+      this.registerUser.reset();
+    })
+    .catch(error => {
+      console.error(error)
+    });
+    
   }
 }
