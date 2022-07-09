@@ -1,0 +1,27 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="2" rowHeight="500px" style="width: 100%;">
+    <mat-grid-tile *ngFor="let card of cards | async" colspan="2" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Bienvenido
+            <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu> -->
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <h4>Be_Agro</h4>
+
+          <img src="../../../assets/images/Be_Agro3.png" style="height: 180px;" alt="Be_Agro">
+          <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis dicta quo assumenda adipisci enim quia corporis aspernatur? Eos et, suscipit impedit reiciendis quisquam dignissimos obcaecati beatae, non illo consequatur atque?</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
