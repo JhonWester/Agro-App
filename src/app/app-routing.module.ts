@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './components/board/board.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
@@ -14,9 +15,13 @@ const routes: Routes = [
   {path: 'register-user', component: RegisterUserComponent},
   {path: 'verify-email', component: VerifyEmailComponent},
   {path: 'recovery-pass', component: RecoveryPasswordComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard], canLoad: [AuthGuard],
+  {path: 'home', 
+    component: HomeComponent, 
+    canActivate: [AuthGuard],
     children: [
-      {path: 'dashboard', component: BoardComponent}
+      {path: '', component: BoardComponent},
+      {path: 'board', component: BoardComponent},
+      {path: 'graphic', component: GraphicComponent}
     ]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'},
 
