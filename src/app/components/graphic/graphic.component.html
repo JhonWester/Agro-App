@@ -2,9 +2,8 @@
 <h1 class="mat-h1">Graficas</h1>
 <div class="grid-container container-fluid">
     <div class="row col-12">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-5 col-xl-5">
             <canvas baseChart
-                width="400"
                 [type]="'pie'"
                 [datasets]="pieChartDatasets"
                 [labels]="pieChartLabels"
@@ -13,9 +12,8 @@
                 [legend]="pieChartLegend">
             </canvas>
         </div>
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-5 col-xl-5">
             <canvas baseChart
-                width="700"
                 [data]="barChartData"
                 [options]="barChartOptions"
                 [plugins]="barChartPlugins"
@@ -23,6 +21,23 @@
                 [type]="'bar'">
             </canvas>
         </div>
+        <div class="col-12 col-lg-5 col-xl-5">
+            <canvas baseChart
+                [datasets]="radarChartDatasets"
+                [options]="radarChartOptions"
+                [labels]="radarChartLabels"
+                [type]="'radar'">
+            </canvas>
+        </div>
+        <div class="col-12 col-lg-5 col-xl-5">
+            <canvas baseChart
+            [datasets]="polarAreaChartDatasets"
+            [labels]="polarAreaChartLabels"
+            [legend]="polarAreaLegend"
+            [options]="polarAreaOptions"
+            [type]="'polarArea'">
+            </canvas>
+        </div>  
     </div>
   </div>
   

@@ -29,7 +29,7 @@ export class GraphicComponent implements OnInit {
 
   // Pie
   public pieChartOptions: ChartOptions<'pie'> = {
-    responsive: false,
+    responsive: true,
   };
   public pieChartLabels = [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ];
   public pieChartDatasets = [ {
@@ -50,8 +50,32 @@ export class GraphicComponent implements OnInit {
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: false,
+    responsive: true,
   };
+
+  public radarChartOptions: ChartConfiguration<'radar'>['options'] = {
+    responsive: true,
+  };
+  public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+
+  public radarChartDatasets: ChartConfiguration<'radar'>['data']['datasets'] = [
+    { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' },
+    { data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B' }
+  ];
+
+
+  
+  // PolarArea
+  public polarAreaChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales' ];
+  public polarAreaChartDatasets: ChartConfiguration<'polarArea'>['data']['datasets'] = [
+    { data: [ 300, 500, 100, 40, 120 ] }
+  ];
+  public polarAreaLegend = true;
+
+  public polarAreaOptions: ChartConfiguration<'polarArea'>['options'] = {
+    responsive: true,
+  };
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
