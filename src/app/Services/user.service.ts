@@ -12,11 +12,18 @@ export class UserService {
 
   constructor() { }
 
-  get User(): User | undefined{
+  get User(): User | undefined {
+    if (!this._user) {
+      const data = localStorage.getItem('user');
+      this._user = data ? JSON.parse(data) as User : undefined;
+    }
     return this._user;
   }
  
   set User(user: User | undefined) {
+    if (user != undefined) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
     this._user = user;
   }
 
@@ -29,6 +36,6 @@ export class UserService {
   }
 
   isLoggued(): boolean {
-    return this._user !== undefined;
+    return this.User !== undefined;
   }
 }

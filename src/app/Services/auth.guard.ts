@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from '../Models/Class/User';
 import { UserService } from '../Services/user.service'
 
 @Injectable({
@@ -8,12 +9,14 @@ import { UserService } from '../Services/user.service'
 })
 export class AuthGuard implements CanActivate, CanLoad {
 
-  constructor(private userService: UserService, private router: Router) {}
+  user: User;
+
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
       if (this.userService.isLoggued()) {
         return true;
       } else {
