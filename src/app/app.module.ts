@@ -8,6 +8,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgChartsModule } from 'ng2-charts';
 
 
 // Components
@@ -33,6 +34,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './shared/footer/footer.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +48,11 @@ import { FooterComponent } from './shared/footer/footer.component';
     HeaderComponent,
     HomeComponent,
     BoardComponent,
-    FooterComponent
+    FooterComponent,
+    GraphicComponent
   ],
   imports: [
+    NgChartsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
