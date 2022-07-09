@@ -32,6 +32,7 @@ import { BoardComponent } from './components/board/board.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatMenuModule } from '@angular/material/menu';
     SpinnerComponent,
     HeaderComponent,
     HomeComponent,
-    BoardComponent
+    BoardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

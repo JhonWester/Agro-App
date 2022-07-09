@@ -6,7 +6,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLinkActive="/board">Dashboard</a>
-      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item>Reportes</a>
       <a mat-list-item (click)="logout()">LogOut</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -26,6 +26,10 @@
 
     <!-- Content -->
     <app-board></app-board>
-
   </mat-sidenav-content>
+  
 </mat-sidenav-container>
+<div class="container">
+
+  <app-footer></app-footer> 
+</div>
