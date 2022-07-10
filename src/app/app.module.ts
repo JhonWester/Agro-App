@@ -35,6 +35,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './shared/footer/footer.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
+import { InitComponent } from './components/init/init.component';
+import { SectionComponent } from './components/init/section/section.component';
+import { AboutUsComponent } from './components/init/about-us/about-us.component';
+import { ContentsComponent } from './components/init/contents/contents.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { GraphicComponent } from './components/graphic/graphic.component';
     HomeComponent,
     BoardComponent,
     FooterComponent,
-    GraphicComponent
+    GraphicComponent,
+    InitComponent,
+    SectionComponent,
+    AboutUsComponent,
+    ContentsComponent
   ],
   imports: [
     NgChartsModule,

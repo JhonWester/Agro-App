@@ -1,0 +1,34 @@
+.img-box {
+    text-align: center;
+}
+
+.detail-box {
+    padding: 60px;
+}
+
+.img-box {
+    margin: auto;
+    width: 90px;
+    height: auto;
+    margin-bottom: 15px;
+    background-color: #62d2a2;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+img {
+    margin: auto;
+}
+
+.contents {
+    text-align: center;
+    margin: 40px auto;
+}
