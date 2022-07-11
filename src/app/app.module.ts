@@ -41,6 +41,7 @@ import { AboutUsComponent } from './components/init/about-us/about-us.component'
 import { ContentsComponent } from './components/init/contents/contents.component';
 import { ProjectComponent } from './components/init/project/project.component';
 import { SolutionsComponent } from './components/init/solutions/solutions.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { SolutionsComponent } from './components/init/solutions/solutions.compon
   ],
   imports: [
     NgChartsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

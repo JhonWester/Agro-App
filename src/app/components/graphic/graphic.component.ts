@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartConfiguration } from 'chart.js';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { ThinkSpeakService } from 'src/app/Services/think-speak.service';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class GraphicComponent implements OnInit {
 
+  initPieChart: boolean;
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
@@ -31,11 +34,11 @@ export class GraphicComponent implements OnInit {
   public pieChartOptions: ChartOptions<'pie'> = {
     responsive: true,
   };
-  public pieChartLabels = [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ];
-  public pieChartDatasets = [ {
-    data: [ 300, 500, 100 ]
-  } ];
-  public pieChartLegend = true;
+  public pieChartLabels = [ [ 'Temperatura', 'Grados' ], [ 'Humedad', '%' ]];
+  public pieChartDatasets = [{
+    data: [ 300, 500 ]
+  }];
+
   public pieChartPlugins = [];
 
   public barChartLegend = true;
@@ -76,9 +79,32 @@ export class GraphicComponent implements OnInit {
     responsive: true,
   };
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private thingService: ThinkSpeakService) {}
 
   ngOnInit(): void {
+    this.initPieChart = false;
+    this.getDataDHT();
+    this.intervalConsumer();
+  }
+
+  getDataDHT(): void {
+    this.thingService.getDataDHT().subscribe(res => {
+      if (res) {
+        this.pieChartDatasets = [ {
+          data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
+        }];
+        this.initPieChart = true;
+      }
+    },
+    error => {
+      console.error(error);
+    })
+}
+
+  intervalConsumer(): void {
+    interval(5000).subscribe(() => {
+      this.getDataDHT();
+    });
   }
 
 }

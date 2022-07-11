@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  thingSpeakUrlRead: 'https://api.thingspeak.com/channels/1795720/feeds.json?api_key=U8HCX4PLFO94KP3X&results=2',
+  keyThingSpeak: 'LCSJ5M98PSD7T1YT',
   firebaseConfig : {
     apiKey: "AIzaSyCvBYw3fRrw4g290dqkdFzfFYyuhy1a_cM",
     authDomain: "agro-app-2aa55.firebaseapp.com",
