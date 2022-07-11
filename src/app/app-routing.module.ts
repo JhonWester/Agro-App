@@ -6,6 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/init/about-us/about-us.component';
 import { ContentsComponent } from './components/init/contents/contents.component';
 import { InitComponent } from './components/init/init.component';
+import { ProjectComponent } from './components/init/project/project.component';
+import { SolutionsComponent } from './components/init/solutions/solutions.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
@@ -17,6 +19,8 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'index', pathMatch: 'full'},
       {path: 'index', component: ContentsComponent},
+      {path: 'project', component: ProjectComponent},
+      {path: 'solutions', component: SolutionsComponent},
       {path: 'about-us', component:AboutUsComponent},
     ]},
   {path: 'login', component: LoginComponent},

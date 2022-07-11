@@ -57,7 +57,7 @@
               <div class="form-floating mb-3">
                 <input type="password" class="form-control" formControlName="repeatPass" placeholder="Repetir Password">
                 <label>Repetir Password</label>
-                <span *ngIf="registerUser.get('password')?.hasError('required') && registerUser.get('password')?.touched" class="text-danger errorLabel">
+                <span *ngIf="registerUser.get('repeatPass')?.hasError('required') && registerUser.get('repeatPass')?.touched" class="text-danger errorLabel">
                   <strong>Contrasenha</strong> requerida
               </span>
                 <span *ngIf="registerUser.get('repeatPass')?.hasError('minLength') && registerUser.get('repeatPass')?.touched" class="text-danger errorLabel">

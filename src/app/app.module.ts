@@ -39,6 +39,8 @@ import { InitComponent } from './components/init/init.component';
 import { SectionComponent } from './components/init/section/section.component';
 import { AboutUsComponent } from './components/init/about-us/about-us.component';
 import { ContentsComponent } from './components/init/contents/contents.component';
+import { ProjectComponent } from './components/init/project/project.component';
+import { SolutionsComponent } from './components/init/solutions/solutions.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { ContentsComponent } from './components/init/contents/contents.component
     InitComponent,
     SectionComponent,
     AboutUsComponent,
-    ContentsComponent
+    ContentsComponent,
+    ProjectComponent,
+    SolutionsComponent
   ],
   imports: [
     NgChartsModule,

@@ -61,4 +61,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  returLogin(): void {
+    this.router.navigate(['/index']);
+  }
+
 }
