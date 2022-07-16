@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { ThinkSpeakService } from 'src/app/Services/think-speak.service';
 import { interval } from 'rxjs';
+import { ConnectDataService } from 'src/app/Services/connect-data.service';
 
 
 @Component({
@@ -79,12 +80,15 @@ export class GraphicComponent implements OnInit {
     responsive: true,
   };
 
-  constructor(private breakpointObserver: BreakpointObserver, private thingService: ThinkSpeakService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private thingService: ThinkSpeakService, private connectDb: ConnectDataService) {}
 
   ngOnInit(): void {
     this.initPieChart = false;
     this.getDataDHT();
     this.intervalConsumer();
+    this.connectDb.getSensorDHT().subscribe(res => {
+      console.log(res);
+    });
   }
 
   getDataDHT(): void {
