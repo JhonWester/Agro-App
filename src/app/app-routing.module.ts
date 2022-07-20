@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './components/board/board.component';
+import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphic.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/init/about-us/about-us.component';
@@ -33,7 +34,13 @@ const routes: Routes = [
     children: [
       {path: '', component: BoardComponent},
       {path: 'board', component: BoardComponent},
-      {path: 'graphic', component: GraphicComponent}
+      {path: 'graphic', 
+      component: GraphicComponent,
+      children: [
+        {path: '', component: DthGraphicComponent},
+        {path: 'dth-graphic', component: DthGraphicComponent},
+      ]
+    }
     ]},
   {path: '**', redirectTo: 'index', pathMatch: 'full'},
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
-import { SensorDHT } from '../Models/Class/SensorDHT';
+import { Environment } from '../Models/Class/Environment';
 import { SensorFT } from '../Models/Class/SensorFT';
 import { SensorLDR } from '../Models/Class/SensorLDR';
 
@@ -14,7 +14,7 @@ export class ConnectDataService {
   private pathSensorFT = '/Sensors/Humidity';
   private pathSensorLDR = '/Sensors/Light';
 
-  private myDTH: AngularFireObject<SensorDHT>;
+  private myDTH: AngularFireObject<Environment>;
   private myFT: AngularFireObject<SensorFT>;
   private myLDR: AngularFireObject<SensorLDR>;
 

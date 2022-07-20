@@ -84,25 +84,25 @@ export class GraphicComponent implements OnInit {
 
   ngOnInit(): void {
     this.initPieChart = false;
-    this.getDataDHT();
-    this.intervalConsumer();
-    this.connectDb.getSensorDHT().subscribe(res => {
-      console.log(res);
-    });
+    // this.getDataDHT();
+    // this.intervalConsumer();
+    // this.connectDb.getSensorDHT().subscribe(res => {
+    //   console.log(res);
+    // });
   }
 
   getDataDHT(): void {
-    this.thingService.getDataDHT().subscribe(res => {
-      if (res) {
-        this.pieChartDatasets = [{
-          data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
-        }];
-        this.initPieChart = true;
-      }
-    },
-    error => {
-      console.error(error);
-    })
+    // this.thingService.getDataDHT().subscribe(res => {
+    //   if (res) {
+    //     this.pieChartDatasets = [{
+    //       data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
+    //     }];
+    //     this.initPieChart = true;
+    //   }
+    // },
+    // error => {
+    //   console.error(error);
+    // })
 }
 
   intervalConsumer(): void {

@@ -1,0 +1,27 @@
+<div class="row target" *ngIf="sensorDTH">
+    <mat-card class="col col-lg-6 col-xl-6">
+        <div *ngIf="initPieChart" class="col-12">
+            <canvas baseChart
+                [type]="'pie'"
+                [datasets]="pieChartDatasets"
+                [labels]="pieChartLabels"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="true">
+            </canvas>
+        </div>
+    </mat-card>
+    
+    <mat-card class="example-card col col-lg-6 col-xl-6">
+        <mat-card-title>Grafica de humedad y temperatura</mat-card-title>
+        <mat-card-subtitle>Sensor DHT11</mat-card-subtitle>
+        <mat-card-content>
+          <p>Esta grafica determina del nivel de humedad y temperatura actual del sistema</p>
+          <p>{{longText}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button><span style="background-color: #ffa1b5;">Temperatura</span> {{sensorDTH.Temperature}}°c</button>
+          <button mat-button><span style="background-color: #86c7f3;">Humedad</span> {{sensorDTH.Humidity}}%</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

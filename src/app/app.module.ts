@@ -43,6 +43,7 @@ import { ContentsComponent } from './components/init/contents/contents.component
 import { ProjectComponent } from './components/init/project/project.component';
 import { SolutionsComponent } from './components/init/solutions/solutions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphic.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutUsComponent,
     ContentsComponent,
     ProjectComponent,
-    SolutionsComponent
+    SolutionsComponent,
+    DthGraphicComponent
   ],
   imports: [
     NgChartsModule,
