@@ -30,10 +30,16 @@ export class HumidityGraphComponent implements OnInit {
 
   getHumidity() {
     this.connectDB.getIndexFT().subscribe(res => {
+      this.oldData = this.newData;
       this.newData = res;
-      this.radarChartDatasets = [{
-        data: this.newData, label: "Nueva tasa de humedad"
-      }]
+      this.radarChartDatasets = [
+        {
+          data: this.oldData, label: "Tasa anterior de humedad %"
+        },
+        {
+          data: this.newData, label: "Nueva tasa de humedad %"
+        }
+      ]
     });
   }
 
