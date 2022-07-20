@@ -45,6 +45,7 @@ import { SolutionsComponent } from './components/init/solutions/solutions.compon
 import { HttpClientModule } from '@angular/common/http';
 import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphic.component';
 import { HumidityGraphComponent } from './components/graphic/humidity-graph/humidity-graph.component';
+import { LightGraphicComponent } from './components/graphic/light-graphic/light-graphic.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { HumidityGraphComponent } from './components/graphic/humidity-graph/humi
     ProjectComponent,
     SolutionsComponent,
     DthGraphicComponent,
-    HumidityGraphComponent
+    HumidityGraphComponent,
+    LightGraphicComponent
   ],
   imports: [
     NgChartsModule,

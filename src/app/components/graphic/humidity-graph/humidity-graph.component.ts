@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
+import { SensorFT } from 'src/app/Models/Class/SensorFT';
 import { ConnectDataService } from 'src/app/Services/connect-data.service';
 
 @Component({
@@ -21,11 +22,13 @@ export class HumidityGraphComponent implements OnInit {
 
   oldData: Array<number>;
   newData: Array<number>;
+  sensorFT: SensorFT;
 
   constructor(private connectDB: ConnectDataService) { }
 
   ngOnInit(): void {
     this.getHumidity();
+    this.getLastFt();
   }
 
   getHumidity() {
@@ -50,6 +53,22 @@ export class HumidityGraphComponent implements OnInit {
     }
 
     return total;
+  }
+
+  getLastFt() {
+    this.connectDB.getSensorFT().subscribe((res: any) => {
+      if (res) {
+        this.sensorFT = JSON.parse(res);
+      }
+    })
+  }
+
+  stateSystem() {
+    if (this.sensorFT != null) {
+      return '👍'
+    } else {
+      return '👎'
+    }
   }
 
 }

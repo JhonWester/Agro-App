@@ -21,9 +21,11 @@
             aqui podemos verificar el estado de humedad y sus diferentes variaciones en un rango de actualizacion de 35 segundos.
           </p>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf="sensorFT?.GroundMoisture">
           <button mat-button><span style="background-color: #8ddba3;">Promedio de Humedad</span> {{getPromedio()}}%</button>
-          <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de humedad registrada:</span> {{newData[newData.length - 1]}}%</button>
+          <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de humedad registrada:</span> {{sensorFT?.GroundMoisture}}%</button>
+          <button *ngIf="sensorFT && sensorFT.GroundMoisture > 60" mat-button>Estado del cultivo: <span class="color1">Optimo</span> 👍</button>
+          <button *ngIf="sensorFT && sensorFT.GroundMoisture < 60" mat-button>Estado del cultivo: <span class="color1">Baja Humedad</span> 👎</button>
         </mat-card-actions>
       </mat-card>
 </div>

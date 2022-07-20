@@ -13,23 +13,30 @@ export class ConnectDataService {
   private pathSensorDTH = '/Sensors/Environment';
   private pathSensorFT = '/Sensors/Humidity';
   private pathSensorLDR = '/Sensors/Light';
-  private pathIndex = '/Indices';
+  private pathIndexFT = '/Indices/Humedad/';
+  private pathIndexLG = '/Indices/Luz/';
 
   private myDTH: AngularFireObject<Environment>;
   private myFT: AngularFireObject<SensorFT>;
   private myLDR: AngularFireObject<SensorLDR>;
-  private myIndex: AngularFireList<number>;
+  private myIndexLG: AngularFireList<number>;
+  private myIndexFT: AngularFireList<number>;
 
 
   constructor(private db: AngularFireDatabase) { 
     this.myDTH = db.object(this.pathSensorDTH);
     this.myFT = db.object(this.pathSensorFT);
     this.myLDR = db.object(this.pathSensorLDR);
-    this.myIndex = db.list(this.pathIndex);
+    this.myIndexFT = db.list(this.pathIndexFT);
+    this.myIndexLG = db.list(this.pathIndexLG);
+  }
+
+  getIndexLG() {
+    return this.myIndexLG.valueChanges();
   }
 
   getIndexFT() {
-    return this.myIndex.valueChanges();
+    return this.myIndexFT.valueChanges();
   }
 
   getSensorDHT() {
