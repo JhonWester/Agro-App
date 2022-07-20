@@ -94,7 +94,7 @@ export class GraphicComponent implements OnInit {
   getDataDHT(): void {
     this.thingService.getDataDHT().subscribe(res => {
       if (res) {
-        this.pieChartDatasets = [ {
+        this.pieChartDatasets = [{
           data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
         }];
         this.initPieChart = true;

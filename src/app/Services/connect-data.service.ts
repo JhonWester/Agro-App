@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
 import { SensorDHT } from '../Models/Class/SensorDHT';
+import { SensorFT } from '../Models/Class/SensorFT';
+import { SensorLDR } from '../Models/Class/SensorLDR';
 
 
 @Injectable({
@@ -8,16 +10,30 @@ import { SensorDHT } from '../Models/Class/SensorDHT';
 })
 export class ConnectDataService {
 
-  private pathSensorDTH = '/Sensores/dht11';
+  private pathSensorDTH = '/Sensors/Environment';
+  private pathSensorFT = '/Sensors/Humidity';
+  private pathSensorLDR = '/Sensors/Light';
 
-  private mySensorRef: AngularFireObject<SensorDHT>;
+  private myDTH: AngularFireObject<SensorDHT>;
+  private myFT: AngularFireObject<SensorFT>;
+  private myLDR: AngularFireObject<SensorLDR>;
 
 
   constructor(private db: AngularFireDatabase) { 
-    this.mySensorRef = db.object(this.pathSensorDTH);
+    this.myDTH = db.object(this.pathSensorDTH);
+    this.myFT = db.object(this.pathSensorFT);
+    this.myLDR = db.object(this.pathSensorLDR);
   }
 
   getSensorDHT() {
-    return this.mySensorRef.valueChanges();
+    return this.myDTH.valueChanges();
+  }
+
+  getSensorFT() {
+    return this.myFT.valueChanges();
+  }
+
+  getSensorLDR() {
+    return this.myLDR.valueChanges();
   }
 }
