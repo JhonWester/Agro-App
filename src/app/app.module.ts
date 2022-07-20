@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgChartsModule } from 'ng2-charts';
@@ -42,6 +43,9 @@ import { ContentsComponent } from './components/init/contents/contents.component
 import { ProjectComponent } from './components/init/project/project.component';
 import { SolutionsComponent } from './components/init/solutions/solutions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphic.component';
+import { HumidityGraphComponent } from './components/graphic/humidity-graph/humidity-graph.component';
+import { LightGraphicComponent } from './components/graphic/light-graphic/light-graphic.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,10 @@ import { HttpClientModule } from '@angular/common/http';
     AboutUsComponent,
     ContentsComponent,
     ProjectComponent,
-    SolutionsComponent
+    SolutionsComponent,
+    DthGraphicComponent,
+    HumidityGraphComponent,
+    LightGraphicComponent
   ],
   imports: [
     NgChartsModule,
@@ -70,6 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,

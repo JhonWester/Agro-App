@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { ThinkSpeakService } from 'src/app/Services/think-speak.service';
 import { interval } from 'rxjs';
+import { ConnectDataService } from 'src/app/Services/connect-data.service';
 
 
 @Component({
@@ -79,26 +80,29 @@ export class GraphicComponent implements OnInit {
     responsive: true,
   };
 
-  constructor(private breakpointObserver: BreakpointObserver, private thingService: ThinkSpeakService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private thingService: ThinkSpeakService, private connectDb: ConnectDataService) {}
 
   ngOnInit(): void {
     this.initPieChart = false;
-    this.getDataDHT();
-    this.intervalConsumer();
+    // this.getDataDHT();
+    // this.intervalConsumer();
+    // this.connectDb.getSensorDHT().subscribe(res => {
+    //   console.log(res);
+    // });
   }
 
   getDataDHT(): void {
-    this.thingService.getDataDHT().subscribe(res => {
-      if (res) {
-        this.pieChartDatasets = [ {
-          data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
-        }];
-        this.initPieChart = true;
-      }
-    },
-    error => {
-      console.error(error);
-    })
+    // this.thingService.getDataDHT().subscribe(res => {
+    //   if (res) {
+    //     this.pieChartDatasets = [{
+    //       data: [Number(res.feeds[0].field1), Number(res.feeds[0].field2.toString())]
+    //     }];
+    //     this.initPieChart = true;
+    //   }
+    // },
+    // error => {
+    //   console.error(error);
+    // })
 }
 
   intervalConsumer(): void {
