@@ -41,7 +41,9 @@ export class DthGraphicComponent implements OnInit {
         }];
         this.longText = `Actualmente el sistema se encuentra con una medicion de humedad de ${this.sensorDTH.Humidity}% y uan medicion de temperatura de
                           ${this.sensorDTH.Temperature}°c, esta medicion puede variar en el tiempo ya que son datos tomados en tiempo real desde la estacion
-                          Meteorologica realizada con IoT.`
+                          Meteorologica realizada con IoT.\n
+                          Cada cambio que se encuentra en la medicion, sera actualizado en la grafica y obtener los resultados de las mediciones del dispositivo Be_Agro.`
+
         this.initPieChart = true;
       }
     },

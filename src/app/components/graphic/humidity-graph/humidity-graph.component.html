@@ -1,0 +1,29 @@
+<div class="row target" *ngIf="newData">
+    <mat-card class="col col-lg-6 col-xl-6">
+        <div class="col-12">
+                <canvas baseChart
+                    height="" width="300"
+                    [datasets]="radarChartDatasets"
+                    [options]="radarChartOptions"
+                    [labels]="radarChartLabels"
+                    [type]="'radar'">
+                </canvas>
+        </div>
+    </mat-card>
+    
+    <mat-card class="example-card col col-lg-6 col-xl-6">
+        <mat-card-title>Grafica de Humedad de suelo</mat-card-title>
+        <mat-card-subtitle>Sensor FC-28</mat-card-subtitle>
+        <mat-card-content>
+          <p>Esta grafica determina los datos de humedad de suelo en la que se encuentra el cultivo de arroz.</p>
+          <br>
+          <p>Indica los resultados de las ultimas 7 recolecciones de datos acerca de la humedad de suelo en el cultivo de arroz,
+            aqui podemos verificar el estado de humedad y sus diferentes variaciones en un rango de actualizacion de 35 segundos.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button><span style="background-color: #ffa1b5;">Promedio de Humedad</span> {{getPromedio()}}%</button>
+          <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de humedad registrada:</span> {{newData[newData.length - 1]}}%</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './components/board/board.component';
 import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphic.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
+import { HumidityGraphComponent } from './components/graphic/humidity-graph/humidity-graph.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/init/about-us/about-us.component';
 import { ContentsComponent } from './components/init/contents/contents.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
       children: [
         {path: '', component: DthGraphicComponent},
         {path: 'dth-graphic', component: DthGraphicComponent},
+        {path: 'df-graphic', component: HumidityGraphComponent}
       ]
     }
     ]},
