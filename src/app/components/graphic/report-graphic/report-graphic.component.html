@@ -1,0 +1,30 @@
+<div class="row target">
+    <mat-card class="col col-lg-6 col-xl-6">
+        <canvas baseChart width="400" height="400"
+              [type]="'line'"
+              [data]="lineChartData"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend">
+        </canvas>
+          
+    </mat-card>
+    
+    <mat-card class="example-card col col-lg-6 col-xl-6">
+        <mat-card-title>Grafica del estado actual de Be_Agro</mat-card-title>
+        <mat-card-subtitle>Modulos y sensores</mat-card-subtitle>
+        <mat-card-content>
+          <p>Esta grafica analiza el estado actual de luz ambiente encontrada en el cultivo de arroz</p>
+          <br>
+          <p>Indica los resultados de las ultimas 7 recolecciones de datos acerca de la luz solar en el cultivo de arroz,
+            aqui podemos verificar el estado de luminocidad en el cual se encuentra el cultibo y sus diferentes variaciones en un rango de actualizacion de 35 segundos.
+          </p>
+        </mat-card-content>
+        <!-- <mat-card-actions *ngIf="sensorLuz?.LightLevel">
+          <button mat-button><span style="background-color: #8ddba3;">Promedio de Luz ambiente</span> {{getPromedio() | number}}%</button>
+          <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de Luz registrado:</span> {{sensorLuz?.LightLevel}}%</button>
+          <button *ngIf="sensorLuz && sensorLuz.LightLevel > 70" mat-button>Nivel de luz: <span class="color1">Dia</span> ☀️</button>
+          <button *ngIf="sensorLuz && sensorLuz.LightLevel >= 40  && sensorLuz.LightLevel <= 70" mat-button>Nivel de luz: <span class="color1">Nublado</span> 🌤️</button>
+          <button *ngIf="sensorLuz && sensorLuz.LightLevel < 40" mat-button>Nivel de luz: <span class="color1">Noche</span> ☪️</button>
+        </mat-card-actions> -->
+      </mat-card>
+</div>

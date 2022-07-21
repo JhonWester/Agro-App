@@ -5,6 +5,7 @@ import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphi
 import { GraphicComponent } from './components/graphic/graphic.component';
 import { HumidityGraphComponent } from './components/graphic/humidity-graph/humidity-graph.component';
 import { LightGraphicComponent } from './components/graphic/light-graphic/light-graphic.component';
+import { ReportGraphicComponent } from './components/graphic/report-graphic/report-graphic.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/init/about-us/about-us.component';
 import { ContentsComponent } from './components/init/contents/contents.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
         {path: '', component: DthGraphicComponent},
         {path: 'dth-graphic', component: DthGraphicComponent},
         {path: 'df-graphic', component: HumidityGraphComponent},
-        {path: 'light-graphic', component: LightGraphicComponent}
+        {path: 'light-graphic', component: LightGraphicComponent},
+        {path: 'report-graphic', component: ReportGraphicComponent}
       ]
     }
     ]},
