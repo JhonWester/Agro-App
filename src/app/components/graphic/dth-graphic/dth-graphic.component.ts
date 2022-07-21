@@ -14,7 +14,7 @@ export class DthGraphicComponent implements OnInit {
   public pieChartOptions: ChartOptions<'pie'> = {
     responsive: true,
   };
-  public pieChartLabels = [ [ 'Temperatura', 'Grados' ], [ 'Humedad', '%' ]];
+  public pieChartLabels = [ [ 'Hum', '%' ], [ 'Temp', '°c' ]];
 
   public pieChartDatasets = [{
     data: [ 300, 500 ]

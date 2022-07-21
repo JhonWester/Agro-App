@@ -1,6 +1,6 @@
 <div class="row target" *ngIf="sensorDTH">
     <mat-card class="col col-lg-6 col-xl-6">
-        <div *ngIf="initPieChart" class="col-12">
+        <div *ngIf="initPieChart">
             <canvas baseChart
                 [type]="'pie'"
                 [datasets]="pieChartDatasets"
