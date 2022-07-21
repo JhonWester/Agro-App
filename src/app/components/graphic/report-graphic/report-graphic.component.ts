@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { forkJoin } from 'rxjs';
+import { SensorFT } from 'src/app/Models/Class/SensorFT';
+import { SensorLDR } from 'src/app/Models/Class/SensorLDR';
 import { ConnectDataService } from 'src/app/Services/connect-data.service';
 
 @Component({
@@ -34,12 +36,14 @@ export class ReportGraphicComponent implements OnInit {
   };
 
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: false
+    responsive: true
   };
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   newDataLG: Array<number>;
   newDataFT: Array<number>;
+  sensorLuz: SensorLDR;
+  sensorFT: SensorFT;
 
   public lineChartLegend = true;
   
@@ -47,6 +51,8 @@ export class ReportGraphicComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListLG();
+    this.getLastLDR();
+    this.getLastFt();
   }
 
   getListLG() {
@@ -101,6 +107,35 @@ export class ReportGraphicComponent implements OnInit {
       }
     ];
     this.chart?.update();
+  }
+
+  getLastLDR() {
+    this.connectDB.getSensorLDR().subscribe((res: any) => {
+      this.sensorLuz = JSON.parse(res);
+    });
+  }
+
+  getLastFt() {
+    this.connectDB.getSensorFT().subscribe((res: any) => {
+      if (res) {
+        this.sensorFT = JSON.parse(res);
+      }
+    })
+  }
+
+  getPromedio(type: string) {
+    let total = 0
+    if (type == 'FT') {
+      if (this.newDataFT.length > 0) {
+        total = this.newDataFT.reduce(function(a, b) {return a += b}) / this.newDataFT.length;
+      }
+    } else {
+      if (this.newDataLG.length > 0) {
+        total = this.newDataLG.reduce(function(a, b) {return a += b}) / this.newDataLG.length;
+      }
+    }
+
+    return total;
   }
 
 }

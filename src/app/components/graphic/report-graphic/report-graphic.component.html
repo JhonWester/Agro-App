@@ -1,6 +1,6 @@
 <div class="row target">
     <mat-card class="col col-lg-6 col-xl-6">
-        <canvas baseChart width="400" height="400"
+        <canvas baseChart width="500" height="400"
               [type]="'line'"
               [data]="lineChartData"
               [options]="lineChartOptions"
@@ -13,18 +13,27 @@
         <mat-card-title>Grafica del estado actual de Be_Agro</mat-card-title>
         <mat-card-subtitle>Modulos y sensores</mat-card-subtitle>
         <mat-card-content>
-          <p>Esta grafica analiza el estado actual de luz ambiente encontrada en el cultivo de arroz</p>
+          <p>Esta grafica analiza las ultimas 7 mediciones de humedad de suelo y luz encontrada en el cultivo de arroz</p>
           <br>
-          <p>Indica los resultados de las ultimas 7 recolecciones de datos acerca de la luz solar en el cultivo de arroz,
-            aqui podemos verificar el estado de luminocidad en el cual se encuentra el cultibo y sus diferentes variaciones en un rango de actualizacion de 35 segundos.
+          <p>Indica los resultados de las ultimas 7 recolecciones de datos acerca de la luz solar y humedad de suelo en el cultivo de arroz,
+            en esta grafica podemos identificar el comportamiento de las mediciones, y revizar sus variantes para sacar reportes y estudiar las
+            diferentes variantes presentadas en cuanto a las dos variables.
           </p>
         </mat-card-content>
-        <!-- <mat-card-actions *ngIf="sensorLuz?.LightLevel">
-          <button mat-button><span style="background-color: #8ddba3;">Promedio de Luz ambiente</span> {{getPromedio() | number}}%</button>
-          <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de Luz registrado:</span> {{sensorLuz?.LightLevel}}%</button>
+        <mat-card-actions *ngIf="sensorLuz?.LightLevel">
+          <button mat-button><span style="background-color: #ffb2b2;">Promedio de Luz ambiente</span> {{getPromedio('dht') | number}}%</button>
+          <button mat-button><span>Ultimo dato de Luz registrado:</span> {{sensorLuz?.LightLevel}}%</button>
+
           <button *ngIf="sensorLuz && sensorLuz.LightLevel > 70" mat-button>Nivel de luz: <span class="color1">Dia</span> ☀️</button>
           <button *ngIf="sensorLuz && sensorLuz.LightLevel >= 40  && sensorLuz.LightLevel <= 70" mat-button>Nivel de luz: <span class="color1">Nublado</span> 🌤️</button>
           <button *ngIf="sensorLuz && sensorLuz.LightLevel < 40" mat-button>Nivel de luz: <span class="color1">Noche</span> ☪️</button>
-        </mat-card-actions> -->
+        </mat-card-actions>
+
+        <mat-card-actions *ngIf="sensorFT?.GroundMoisture">
+            <button mat-button><span style="background-color: #dbdddf;">Promedio de Humedad</span> {{getPromedio('ft') | number}}%</button>
+            <button mat-button><span>Ultimo dato de humedad registrada:</span> {{sensorFT?.GroundMoisture}}%</button>
+            <button *ngIf="sensorFT && sensorFT.GroundMoisture > 60" mat-button>Estado del cultivo: <span class="color1">Optimo</span> 👍</button>
+            <button *ngIf="sensorFT && sensorFT.GroundMoisture < 60" mat-button>Estado del cultivo: <span class="color1">Baja Humedad</span> 👎</button>
+          </mat-card-actions>
       </mat-card>
 </div>
