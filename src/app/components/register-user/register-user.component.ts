@@ -25,6 +25,7 @@ export class RegisterUserComponent implements OnInit {
       address: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      city: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPass: ['', [Validators.required, Validators.minLength(6)]]
     },
@@ -49,6 +50,7 @@ export class RegisterUserComponent implements OnInit {
       this.user.phone = form.phone;
       this.user.email = form.email;
       this.user.pass = '';
+      this.user.ciudad = form.city.toLowerCase();
       
       this.fireService.createLogin(this.user.email, form.password).then(response => {
         this.loading = true;

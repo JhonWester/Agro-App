@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
 import { AuthGuard } from './Services/auth.guard';
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
         {path: 'light-graphic', component: LightGraphicComponent},
         {path: 'report-graphic', component: ReportGraphicComponent}
       ]
-    }
+    },
+    {path: 'weather', component: WeatherWidgetComponent}
     ]},
   {path: '**', redirectTo: 'index', pathMatch: 'full'},
 

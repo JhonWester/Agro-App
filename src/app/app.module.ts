@@ -47,6 +47,7 @@ import { DthGraphicComponent } from './components/graphic/dth-graphic/dth-graphi
 import { HumidityGraphComponent } from './components/graphic/humidity-graph/humidity-graph.component';
 import { LightGraphicComponent } from './components/graphic/light-graphic/light-graphic.component';
 import { ReportGraphicComponent } from './components/graphic/report-graphic/report-graphic.component';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ReportGraphicComponent } from './components/graphic/report-graphic/repo
     DthGraphicComponent,
     HumidityGraphComponent,
     LightGraphicComponent,
-    ReportGraphicComponent
+    ReportGraphicComponent,
+    WeatherWidgetComponent
   ],
   imports: [
     NgChartsModule,
