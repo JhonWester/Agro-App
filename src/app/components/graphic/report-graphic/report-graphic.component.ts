@@ -100,8 +100,8 @@ export class ReportGraphicComponent implements OnInit {
       {
         data: this.newDataFT,
         label: 'Humedad actual %',
-        backgroundColor: 'rgba(255,0,0,0.3)',
-        borderColor: 'red',
+        backgroundColor: '#86bfe587',
+        borderColor: '#86bfe587',
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
