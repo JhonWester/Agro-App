@@ -126,11 +126,11 @@ export class ReportGraphicComponent implements OnInit {
   getPromedio(type: string) {
     let total = 0
     if (type == 'FT') {
-      if (this.newDataFT.length > 0) {
+      if (this.newDataFT && this.newDataFT.length > 0) {
         total = this.newDataFT.reduce(function(a, b) {return a += b}) / this.newDataFT.length;
       }
     } else {
-      if (this.newDataLG.length > 0) {
+      if (this.newDataLG && this.newDataLG.length > 0) {
         total = this.newDataLG.reduce(function(a, b) {return a += b}) / this.newDataLG.length;
       }
     }
