@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { forkJoin } from 'rxjs';
+import { Bomb } from 'src/app/Models/Class/Bomb';
 import { SensorFT } from 'src/app/Models/Class/SensorFT';
 import { SensorLDR } from 'src/app/Models/Class/SensorLDR';
 import { ConnectDataService } from 'src/app/Services/connect-data.service';
@@ -44,6 +45,7 @@ export class ReportGraphicComponent implements OnInit {
   newDataFT: Array<number>;
   sensorLuz: SensorLDR;
   sensorFT: SensorFT;
+  stateBomb: Bomb;
 
   public lineChartLegend = true;
   
@@ -53,6 +55,7 @@ export class ReportGraphicComponent implements OnInit {
     this.getListLG();
     this.getLastLDR();
     this.getLastFt();
+    this.getStateBomb();
   }
 
   getListLG() {
@@ -97,8 +100,8 @@ export class ReportGraphicComponent implements OnInit {
       {
         data: this.newDataFT,
         label: 'Humedad actual %',
-        backgroundColor: 'rgba(255,0,0,0.3)',
-        borderColor: 'red',
+        backgroundColor: '#86bfe587',
+        borderColor: '#86bfe587',
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
@@ -126,16 +129,27 @@ export class ReportGraphicComponent implements OnInit {
   getPromedio(type: string) {
     let total = 0
     if (type == 'FT') {
-      if (this.newDataFT.length > 0) {
+      if (this.newDataFT && this.newDataFT.length > 0) {
         total = this.newDataFT.reduce(function(a, b) {return a += b}) / this.newDataFT.length;
       }
     } else {
-      if (this.newDataLG.length > 0) {
+      if (this.newDataLG && this.newDataLG.length > 0) {
         total = this.newDataLG.reduce(function(a, b) {return a += b}) / this.newDataLG.length;
       }
     }
 
     return total;
+  }
+
+  getStateBomb() {
+    this.connectDB.getBombState().subscribe(res => {
+      this.stateBomb = new Bomb();
+      if (res) {
+        this.stateBomb.active = true;
+      } else {
+        this.stateBomb.active = false;
+      }
+    });
   }
 
 }

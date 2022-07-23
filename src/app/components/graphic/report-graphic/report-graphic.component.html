@@ -1,5 +1,5 @@
-<div class="row target">
-    <mat-card class="col col-lg-6 col-xl-6">
+<div class="row target" *ngIf="newDataLG && newDataLG">
+    <mat-card class="col col-lg-6 col-xl-6" *ngIf="newDataLG && newDataLG">
         <canvas baseChart width="500" height="400"
               [type]="'line'"
               [data]="lineChartData"
@@ -20,20 +20,55 @@
             diferentes variantes presentadas en cuanto a las dos variables.
           </p>
         </mat-card-content>
-        <mat-card-actions *ngIf="sensorLuz?.LightLevel">
-          <button mat-button><span style="background-color: #ffb2b2;">Promedio de Luz ambiente</span> {{getPromedio('dht') | number}}%</button>
-          <button mat-button><span>Ultimo dato de Luz registrado:</span> {{sensorLuz?.LightLevel}}%</button>
 
-          <button *ngIf="sensorLuz && sensorLuz.LightLevel > 70" mat-button>Nivel de luz: <span>Dia</span> ☀️</button>
-          <button *ngIf="sensorLuz && sensorLuz.LightLevel >= 40  && sensorLuz.LightLevel <= 70" mat-button>Nivel de luz: <span class="color1">Nublado</span> 🌤️</button>
-          <button *ngIf="sensorLuz && sensorLuz.LightLevel < 40" mat-button>Nivel de luz: <span>Noche</span> ☪️</button>
-        </mat-card-actions>
-
-        <mat-card-actions *ngIf="sensorFT?.GroundMoisture">
-            <button mat-button><span style="background-color: #dbdddf;">Promedio de Humedad</span> {{getPromedio('ft') | number}}%</button>
-            <button mat-button><span>Ultimo dato de humedad registrada:</span> {{sensorFT?.GroundMoisture}}%</button>
-            <button *ngIf="sensorFT && sensorFT.GroundMoisture > 60" mat-button>Estado del cultivo: <span class="color1">Optimo</span> 👍</button>
-            <button *ngIf="sensorFT && sensorFT.GroundMoisture < 60" mat-button>Estado del cultivo: <span class="color2">Baja Humedad</span> 👎</button>
-          </mat-card-actions>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">1</th>
+              <th scope="col">Registro</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td><span>Promedio de Luz ambiente</span></td>
+              <td><span style="background-color: #dbdddf;">{{getPromedio('LDR') | number}}%</span></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td><span>Ultimo dato de Luz registrado:</span></td>
+              <td>{{sensorLuz.LightLevel}}%</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td><span>Nivel de luz:</span></td>
+              <td *ngIf="sensorLuz && sensorLuz.LightLevel > 70" colspan="2"><p><span  class="color2">Dia</span> ☀️</p></td>
+              <td *ngIf="sensorLuz && sensorLuz.LightLevel >= 40  && sensorLuz.LightLevel <= 70" colspan="2"><p><span class="color4">Nublado</span> 🌤️</p></td>
+              <td *ngIf="sensorLuz && sensorLuz.LightLevel < 40" colspan="2"><p><span class="color3">Noche</span> ☪️</p></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td><span>Promedio de humedad:</span></td>
+              <td><span style="background-color: #86c7f3;">{{getPromedio('FT') | number}}%</span></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td><span>Ultimo dato de humedad registrado:</span></td>
+              <td *ngIf="sensorFT && sensorFT.GroundMoisture > 60" colspan="2"><p><span class="color1">Optimo</span> 👍</p></td>
+              <td *ngIf="sensorFT && sensorFT.GroundMoisture <= 60" colspan="2"><p><span style="background-color:#e9b26b">Baja Humedad</span> 👎</p></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td><span>Estado del sistema: </span></td>
+              <td *ngIf="stateBomb && stateBomb.active" colspan="2"><p><span class="color1">La Bomba de riego esta Trabajando</span> <i class="fas fa-tint fa-2x water"></i></p></td>
+              <td *ngIf="stateBomb && !stateBomb.active" colspan="2"><p><span class="color2">La Bomba de riego esta desactivada</span> <i class="fas fa-tint-slash fa-2x water"></i></p></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <h3>Importante:</h3>
+          <p>Los valores pueden variar por la sincronizacion de las consultas en los servicios</p>
+        </div>
       </mat-card>
 </div>
