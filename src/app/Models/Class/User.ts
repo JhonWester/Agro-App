@@ -6,4 +6,5 @@ export class User {
     phone: string;
     email: string;
     pass: string;
+    ciudad: string;
 }

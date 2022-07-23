@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   thingSpeakUrlRead: 'https://api.thingspeak.com/channels/1795720/feeds.json?api_key=U8HCX4PLFO94KP3X&results=2',
   keyThingSpeak: 'LCSJ5M98PSD7T1YT',
+  weather: 'https://api.openweathermap.org/data/2.5/weather?q=',
+  keyWeather: '199d68e7f76ae10bb21eaf707adb3137',
   firebaseConfig : {
     apiKey: "AIzaSyCvBYw3fRrw4g290dqkdFzfFYyuhy1a_cM",
     authDomain: "agro-app-2aa55.firebaseapp.com",

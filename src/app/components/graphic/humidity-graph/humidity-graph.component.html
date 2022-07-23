@@ -18,14 +18,14 @@
           <p>Esta grafica determina los datos de humedad de suelo en la que se encuentra el cultivo de arroz y se comparan con los datos anteriores.</p>
           <br>
           <p>Indica los resultados de las ultimas 7 recolecciones de datos acerca de la humedad de suelo en el cultivo de arroz,
-            aqui podemos verificar el estado de humedad y sus diferentes variaciones en un rango de actualizacion de 35 segundos.
+            aqui podemos verificar el estado de humedad y sus diferentes variaciones en un rango de actualizacion cada minuto.
           </p>
         </mat-card-content>
         <mat-card-actions *ngIf="sensorFT?.GroundMoisture">
-          <button mat-button><span style="background-color: #8ddba3;">Promedio de Humedad</span> {{getPromedio()}}%</button>
+          <button mat-button><span style="background-color: #8ddba3;">Promedio de Humedad</span> {{getPromedio() | number}}%</button>
           <button mat-button><span style="background-color: #86c7f3;">Ultimo dato de humedad registrada:</span> {{sensorFT?.GroundMoisture}}%</button>
           <button *ngIf="sensorFT && sensorFT.GroundMoisture > 60" mat-button>Estado del cultivo: <span class="color1">Optimo</span> 👍</button>
-          <button *ngIf="sensorFT && sensorFT.GroundMoisture < 60" mat-button>Estado del cultivo: <span class="color1">Baja Humedad</span> 👎</button>
+          <button *ngIf="sensorFT && sensorFT.GroundMoisture < 60" mat-button>Estado del cultivo: <span class="color2">Baja Humedad</span> 👎</button>
         </mat-card-actions>
       </mat-card>
 </div>

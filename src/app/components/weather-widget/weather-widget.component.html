@@ -1,0 +1,66 @@
+<div class="row target" *ngIf="user?.ciudad && weatherData">
+    <mat-card class="col col-lg-6 col-xl-6">
+        <div id="divWeatherMain">
+
+            <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
+                <i class="fas fa-6x fa-sun sun"></i>  
+            </div>   
+            <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
+                <i class="fas fa-6x fa-moon moon"></i>  
+            </div>   
+            <div class="weatherWidgetRow cloudDiv">
+                <i class="fas fa-cloud fa-6x cloud"></i>
+            </div>
+
+            <div class="weatherWidgetRow" style="font-size: 50px; padding-top: 30px">
+                {{  weatherData.temp_celcius }}°
+            </div>
+            <div class="weatherWidgetRow" style="font-size: 24px;">
+                {{  weatherData.temp_min }}° / {{weatherData.temp_max}}°
+            </div>
+            <div class="weatherWidgetRow" style="font-size: 24px;">
+                Temperatura: {{  weatherData.temp_feels_like }}°
+            </div>
+            <div class="weatherWidgetRow"  style="font-size: 24px;">
+                Humedad: {{  weatherData.main.humidity }}%
+            </div>
+            <div class="weatherWidgetRow"  style="font-size: 40px; padding-top: 10px;">
+                {{  weatherData.name }}
+            </div>
+        </div>
+    </mat-card>
+
+    <mat-card class="example-card col col-lg-6 col-xl-6">
+        <mat-card-title>Clima del sector</mat-card-title>
+        <mat-card-subtitle>Monitorea el clima donde se encuentra el cultivo</mat-card-subtitle>
+        <mat-card-content>
+          <p>Observa el clima de la zona en la que se encuentra nuestro cultivo</p>
+          <br>
+          <p>Tienes a la mano las herramientas donde puedes monitorear el comportamiento en tiempo real del clima en donde se encuentra el cultivo de arroz.
+            Es importante que conozcamos el estado actual del clima.
+          </p>
+        </mat-card-content>
+        <mat-card-actions *ngIf="weatherData?.main?.humidity">
+          <button mat-button><span style="background-color: #8ddba3;">Promedio de Humedad: </span> {{  weatherData.main.humidity }}%</button>
+          <button mat-button><span style="background-color: #86c7f3;">Temperatura registrada en la region:</span> {{weatherData.temp_celcius }}°</button>
+
+          <button mat-button><span>Temperatura maxima registrada: </span> {{ weatherData.temp_max }}%</button>
+          <button mat-button><span>Temperatura minima registrada:</span> {{weatherData.temp_min }}°</button>
+          
+          <h3 style="text-align: center; font-weight: bold;">Estado actual del clima</h3>
+          <div id="divWeatherSub">
+            <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
+                <i class="fas fa-6x fa-sun sun"></i>  
+            </div>   
+            <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
+                <i class="fas fa-6x fa-moon moon"></i>  
+            </div>   
+            <div class="weatherWidgetRow cloudDiv">
+                <i class="fas fa-cloud fa-6x cloud"></i>
+            </div>
+          </div>
+
+        </mat-card-actions>
+      </mat-card>
+
+</div>

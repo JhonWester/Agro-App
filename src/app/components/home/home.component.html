@@ -13,6 +13,7 @@
         <button mat-menu-item routerLink="/home/graphic/light-graphic">Sensor de luz</button>
         <button mat-menu-item routerLink="/home/graphic/report-graphic">Estado Be_Agro</button>
       </mat-menu>
+      <a *ngIf="user?.ciudad" mat-list-item routerLink="/home/weather">Clima</a>
       <a mat-list-item (click)="logout()">LogOut</a>
     </mat-nav-list>
   </mat-sidenav>
