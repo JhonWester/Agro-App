@@ -6,14 +6,14 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home/board" [routerLinkActive]="'active'">Dashboard</a>
-      <button mat-button [matMenuTriggerFor]="menu">Graficas</button>
+      <button mat-button [matMenuTriggerFor]="menu">Vista de Graficas</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/home/graphic/dth-graphic">Temperatura y humedad</button>
         <button mat-menu-item routerLink="/home/graphic/df-graphic">Humedad de Suelo</button>
         <button mat-menu-item routerLink="/home/graphic/light-graphic">Sensor de luz</button>
-        <button mat-menu-item routerLink="/home/graphic/report-graphic">Estado Be_Agro</button>
       </mat-menu>
-      <a *ngIf="user?.ciudad" mat-list-item routerLink="/home/weather">Clima</a>
+      <a *ngIf="user?.ciudad" mat-list-item routerLink="/home/report-graphic">Reportes</a>
+      <a *ngIf="user?.ciudad" mat-list-item routerLink="/home/weather">Consulta el clima</a>
       <a mat-list-item (click)="logout()">LogOut</a>
     </mat-nav-list>
   </mat-sidenav>

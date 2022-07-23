@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { forkJoin } from 'rxjs';
+import { Bomb } from 'src/app/Models/Class/Bomb';
 import { SensorFT } from 'src/app/Models/Class/SensorFT';
 import { SensorLDR } from 'src/app/Models/Class/SensorLDR';
 import { ConnectDataService } from 'src/app/Services/connect-data.service';
@@ -44,6 +45,7 @@ export class ReportGraphicComponent implements OnInit {
   newDataFT: Array<number>;
   sensorLuz: SensorLDR;
   sensorFT: SensorFT;
+  stateBomb: Bomb;
 
   public lineChartLegend = true;
   
@@ -53,6 +55,7 @@ export class ReportGraphicComponent implements OnInit {
     this.getListLG();
     this.getLastLDR();
     this.getLastFt();
+    this.getStateBomb();
   }
 
   getListLG() {
@@ -136,6 +139,17 @@ export class ReportGraphicComponent implements OnInit {
     }
 
     return total;
+  }
+
+  getStateBomb() {
+    this.connectDB.getBombState().subscribe(res => {
+      this.stateBomb = new Bomb();
+      if (res) {
+        this.stateBomb.active = true;
+      } else {
+        this.stateBomb.active = false;
+      }
+    });
   }
 
 }

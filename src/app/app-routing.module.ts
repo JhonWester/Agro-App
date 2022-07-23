@@ -44,10 +44,10 @@ const routes: Routes = [
         {path: '', component: DthGraphicComponent},
         {path: 'dth-graphic', component: DthGraphicComponent},
         {path: 'df-graphic', component: HumidityGraphComponent},
-        {path: 'light-graphic', component: LightGraphicComponent},
-        {path: 'report-graphic', component: ReportGraphicComponent}
+        {path: 'light-graphic', component: LightGraphicComponent}
       ]
     },
+    {path: 'report-graphic', component: ReportGraphicComponent},
     {path: 'weather', component: WeatherWidgetComponent}
     ]},
   {path: '**', redirectTo: 'index', pathMatch: 'full'},

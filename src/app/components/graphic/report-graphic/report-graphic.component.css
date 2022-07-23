@@ -5,3 +5,20 @@
 .color2 {
     background-color: rgb(253 219 90);
 }
+
+.color3 {
+    background-color: rgb(46, 47, 155); 
+}
+
+.color4 {
+    background-color: rgb(22, 108, 206); 
+}
+.water{
+    margin-top: 10px;
+    color: rgb(45, 122, 185);
+    filter: drop-shadow( 1px 1px 10px rgb(67, 158, 201));
+}
+
+table {
+    font-size: 15px;
+}
